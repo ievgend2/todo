@@ -1,4 +1,5 @@
 import React from "react";
+import TodoListItem from "./TodoListItem";
 
 export default function TodoList() {
   const todoList = [
@@ -33,16 +34,11 @@ export default function TodoList() {
   return (
     <div>
       <ul>
-        {todoList.map((item) => (
-          <li style={{ listStyleType: "none" }} key={item.id}>
-            <input
-              type="checkbox"
-              id={item.id}
-              name={item.title}
-              value={item.title}
-            />
-            <label for={item.id}>{item.title}</label>
-          </li>
+        {todoList.map((todo) => (
+          <TodoListItem
+          key={todo.id}
+          todo={todo}
+          />
         ))}
       </ul>
     </div>
