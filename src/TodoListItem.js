@@ -9,7 +9,7 @@ export default function TodoListItem(props) {
               name={props.todo.title}
               value={props.todo.title}
             />
-            <label for={props.todo.id}>{props.todo.title}</label>
+            <label htmlFor={props.todo.id}>{props.todo.title}</label>
           </li>
   )
 }
