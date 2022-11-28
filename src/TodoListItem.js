@@ -1,15 +1,11 @@
-import React from 'react'
+import React from "react";
 
 export default function TodoListItem(props) {
+  const { id, title } = props.todo;
   return (
-        <li style={{ listStyleType: "none" }}>
-            <input
-              type="checkbox"
-              id={props.todo.id}
-              name={props.todo.title}
-              value={props.todo.title}
-            />
-            <label htmlFor={props.todo.id}>{props.todo.title}</label>
-          </li>
-  )
+    <li style={{ listStyleType: "none" }}>
+      <input type="checkbox" id={id} name={title} value={title} />
+      <label htmlFor={id}>{title}</label>
+    </li>
+  );
 }
