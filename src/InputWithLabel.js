@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 
-export default function InputWithLabel(props, isFocused) {
+export default function InputWithLabel(props, isFocused, className) {
   const inputRef = useRef();
 
   useEffect(() => {
@@ -11,6 +11,7 @@ export default function InputWithLabel(props, isFocused) {
     <>
       <label htmlFor="todoTitle">{props.children}</label>
       <input
+        className={props.className}
         value={props.todoTitle}
         onChange={props.handleTitleChange}
         ref={inputRef}
