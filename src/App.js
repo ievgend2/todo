@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import AddTodoForm from "./AddTodoForm";
-import TodoList from "./TodoList";
-import style from './TodoListItem.module.css'
-
+import TodoContainer from "./components/TodoContainer";
 
 function App() {
   const [todoList, setTodoList] = useState([]);
@@ -31,35 +28,10 @@ function App() {
     }
   }, [todoList]);
 
-  function addTodo(newTodo) {
-    setTodoList([...todoList, newTodo]);
-  }
-
-  function removeTodo(id) {
-    const newTodoList = todoList.filter((todo) => todo.id !== id);
-    setTodoList(newTodoList);
-  }
-
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          exact
-          path="/"
-          element={
-            <React.Fragment>
-              {isLoading ? (
-                <p>Loading...</p>
-              ) : (
-                  <div className={style.Background}>
-                    <h1>ToDo List:</h1>
-                    <AddTodoForm onAddTodo={addTodo} />
-                    <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
-                  </div>
-              )}
-            </React.Fragment>
-          }
-        />
+        <Route exact path="/" element={<TodoContainer />} />
         <Route
           exact
           path="/new"

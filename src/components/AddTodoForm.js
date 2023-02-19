@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import InputWithLabel from "./InputWithLabel";
 import style from './TodoListItem.module.css'
+import PropTypes from "prop-types";
 
 
-export default function AddTodoForm(props) {
+
+export default function AddTodoForm({onAddTodo}) {
+
   const [todoTitle, setTodoTitle] = useState("");
-  const { onAddTodo } = props;
+
 
   function handleTitleChange(event) {
     const newTodoTitle = event.target.value;
@@ -25,7 +28,6 @@ export default function AddTodoForm(props) {
           todoTitle={todoTitle}
           isFocused
           className={style.FormInput}
-         
           handleTitleChange={handleTitleChange}
         >Title: </InputWithLabel>
         <button type="submit" className={style.FormButton}>Add</button>
@@ -33,3 +35,7 @@ export default function AddTodoForm(props) {
     </div>
   );
 }
+
+AddTodoForm.propTypes = {
+  onAddTodo: PropTypes.func,
+};
