@@ -6,10 +6,11 @@ import style from "./TodoListItem.module.css";
 const TodoContainer = () => {
   const [todoList, setTodoList] = React.useState([true]);
   const [isLoading, setIsLoading] = React.useState(true);
+  const [order, setOrder] = React.useState("asc");
 
   React.useEffect(() => {
     fetch(
-      `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`,
+      `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default?view=Grid%20view&sort[0][field]=Title&sort[0][direction]=${order}`,
       {
         headers: {
           Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
@@ -19,10 +20,16 @@ const TodoContainer = () => {
       .then((response) => response.json())
       .then((result) => {
         console.log(result);
-        setTodoList(result.records || []);
+        setTodoList(
+          result.records.sort(function (a, b) {
+            if (a > b) return 1;
+            if (a < b) return -1;
+            return 0;
+          }) || []
+        );
         setIsLoading(false);
       });
-  }, []);
+  }, [order]);
 
   React.useEffect(() => {
     if (!isLoading) {
@@ -34,12 +41,15 @@ const TodoContainer = () => {
     const data = {
       fields: {
         Title: newTodo.title,
-        // Description: newTodo.description,
-        // "Due Date": newTodo.dueDate,
       },
     };
     addListItem(data);
   }
+
+  const handleOrderChange = (e) => {
+    if (e.target.checked) setOrder("desc");
+    else setOrder("asc");
+  };
 
   const removeTodo = (id) => {
     fetch(
@@ -94,6 +104,14 @@ const TodoContainer = () => {
       ) : (
         <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
       )}
+
+      <div className={`${style.TextBig} ${style.Margin}`}>
+        <span>Order:</span>
+        <label className={style.Switch}>
+          <input type="checkbox" onChange={handleOrderChange} />
+          <span className={`${style.Slider} ${style.Round}`}></span>
+        </label>
+      </div>
     </div>
   );
 };
