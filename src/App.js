@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import NotFoundPage from "./components/NotFoundPage";
 import TodoContainer from "./components/TodoContainer";
 
 function App() {
@@ -7,15 +8,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<TodoContainer />} />
-        <Route
-          exact
-          path="/new"
-          element={
-            <React.Fragment>
-              <h1>New ToDo</h1>
-            </React.Fragment>
-          }
-        />
+        <Route path='*' element={<NotFoundPage/>} />
       </Routes>
     </BrowserRouter>
   );
