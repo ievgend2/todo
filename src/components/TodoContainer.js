@@ -1,8 +1,7 @@
 import React from "react";
 import AddTodoForm from "./AddTodoForm";
 import TodoList from "./TodoList";
-import style from './TodoListItem.module.css'
-
+import style from "./TodoListItem.module.css";
 
 const TodoContainer = () => {
   const [todoList, setTodoList] = React.useState([true]);
@@ -10,9 +9,7 @@ const TodoContainer = () => {
 
   React.useEffect(() => {
     fetch(
-      `https://api.airtable.com/v0/${
-        process.env.REACT_APP_AIRTABLE_BASE_ID
-      }/Default`,
+      `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`,
       {
         headers: {
           Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
@@ -46,9 +43,7 @@ const TodoContainer = () => {
 
   const removeTodo = (id) => {
     fetch(
-      `https://api.airtable.com/v0/${
-        process.env.REACT_APP_AIRTABLE_BASE_ID
-      }/Default/${id}`,
+      `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default/${id}`,
       {
         method: "DELETE",
         headers: {
@@ -71,9 +66,7 @@ const TodoContainer = () => {
 
   const addListItem = (todoItemData) => {
     fetch(
-      `https://api.airtable.com/v0/${
-        process.env.REACT_APP_AIRTABLE_BASE_ID
-      }/Default`,
+      `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`,
       {
         method: "POST",
         headers: {
