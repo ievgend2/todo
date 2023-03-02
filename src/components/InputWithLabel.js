@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 
-export default function InputWithLabel(props, isFocused, className) {
+export default function InputWithLabel({ isFocused, todoTitle, handleTitleChange, className, children}) {
   InputWithLabel.propTypes = {
     children: PropTypes.oneOfType([
       PropTypes.string,
@@ -21,11 +21,11 @@ export default function InputWithLabel(props, isFocused, className) {
 
   return (
     <>
-      <label htmlFor="todoTitle">{props.children}</label>
+      <label htmlFor="todoTitle">{children}</label>
       <input
-        className={props.className}
-        value={props.todoTitle}
-        onChange={props.handleTitleChange}
+        className={className}
+        value={todoTitle}
+        onChange={handleTitleChange}
         placeholder="What is on your mind?"
         ref={inputRef}
       ></input>

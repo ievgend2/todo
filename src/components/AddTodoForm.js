@@ -18,7 +18,7 @@ export default function AddTodoForm({ onAddTodo }) {
   function handleAddTodo(event) {
     event.preventDefault();
     if (todoTitle.trim().length === 0) alert("ToDo can't be blank!");
-    else onAddTodo({ title: todoTitle, id: Date.now() });
+    else onAddTodo(todoTitle);
     setTodoTitle("");
   }
 

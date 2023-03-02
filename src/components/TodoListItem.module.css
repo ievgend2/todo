@@ -26,6 +26,16 @@
     font-size: 20px;
 }
 
+.Inline {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.Icon {
+  font-size: 150px !important;
+}
+
 .FormInput {
     font-size: 20px;
 }

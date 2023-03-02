@@ -7,7 +7,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/" element={<TodoContainer />} />
+        <Route exact path="/home" element={<TodoContainer tableName={'Home'}/>} />
+        <Route exact path="/work" element={<TodoContainer tableName={'Work'}/>} />
         <Route path='*' element={<NotFoundPage/>} />
       </Routes>
     </BrowserRouter>
