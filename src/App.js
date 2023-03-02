@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AddTodoForm from "./AddTodoForm";
 import TodoList from "./TodoList";
+import style from './TodoListItem.module.css'
+
 
 function App() {
   const [todoList, setTodoList] = useState([]);
@@ -49,13 +51,11 @@ function App() {
               {isLoading ? (
                 <p>Loading...</p>
               ) : (
-                <>
-                  <div style={{ marginLeft: "25%" }}>
-                    <h1>ToDo List</h1>
+                  <div className={style.Background}>
+                    <h1>ToDo List:</h1>
                     <AddTodoForm onAddTodo={addTodo} />
                     <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
                   </div>
-                </>
               )}
             </React.Fragment>
           }
