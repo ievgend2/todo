@@ -1,0 +1,134 @@
+.Background {
+    background-color: #333;
+    color: #FFE300;
+    margin: auto;
+    margin-top: 50px;
+    width: 50%;
+    text-align: center;
+    border: 1px solid;
+    border-radius: 6px;
+    border-color: black;
+}
+
+
+.Button {
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 2.5px;
+    font-size: 8px;
+}
+
+.FormButton {
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.FormInput {
+    font-size: 20px;
+}
+
+.TextBig {
+    font-size: 30px;
+    font-family: "Lucida Console", "Courier New", monospace;
+}
+
+.Margin {
+    line-height: 40px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.Line{
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+.Checkbox{
+    width: 25px;
+    height: 25px;
+    padding: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-top: 15px;
+}
+
+/* The switch - the box around the slider */
+.Switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .Switch Input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .Slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .Slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: #333;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  Input:checked + .Slider {
+    background-color: #FFE300;
+  }
+  
+  Input:focus + .Slider {
+    box-shadow: 0 0 1px #FFE300;
+  }
+  
+  Input:checked + .Slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .Slider.Round {
+    border-radius: 34px;
+  }
+  
+  .Slider.Round:before {
+    border-radius: 50%;
+  }
+
+  .Link {
+    color: #ffe1007a;
+    font-size: 30px;
+    font-family: "Lucida Console", "Courier New", monospace;
+    text-decoration: none;
+    font-weight: 800;
+    }
+    
+    .Link:hover {
+        color: #FFE300;
+    }
