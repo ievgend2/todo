@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AddTodoForm from "./AddTodoForm";
 import TodoList from "./TodoList";
 
@@ -7,7 +8,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    setIsLoading(true)
+    setIsLoading(true);
     fetch(
       `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`,
       {
@@ -15,11 +16,11 @@ function App() {
           Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
         },
       }
-      )
+    )
       .then((response) => response.json())
-      .then((results) => setTodoList(results.records))
-      setIsLoading(false)
-      // .then((results) => console.log(results.records))
+      .then((results) => setTodoList(results.records));
+    setIsLoading(false);
+    // .then((results) => console.log(results.records))
   }, []);
 
   useEffect(() => {
@@ -38,17 +39,38 @@ function App() {
   }
 
   return (
-    <>
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        <div style={{ marginLeft: "25%" }}>
-          <h1>ToDo List</h1>
-          <AddTodoForm onAddTodo={addTodo} />
-          <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
-        </div>
-      )}
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          exact
+          path="/"
+          element={
+            <React.Fragment>
+              {isLoading ? (
+                <p>Loading...</p>
+              ) : (
+                <>
+                  <div style={{ marginLeft: "25%" }}>
+                    <h1>ToDo List</h1>
+                    <AddTodoForm onAddTodo={addTodo} />
+                    <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+                  </div>
+                </>
+              )}
+            </React.Fragment>
+          }
+        />
+        <Route
+          exact
+          path="/new"
+          element={
+            <React.Fragment>
+              <h1>New ToDo</h1>
+            </React.Fragment>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
