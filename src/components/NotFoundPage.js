@@ -6,7 +6,7 @@ export default function NotFoundPage() {
   return (
     <div className={style.Background}>
       <h1>Page not Found </h1>
-      <Link to={`/`} className={style.Link}>
+      <Link to={`/home`} className={style.Link}>
         Click here to go Back
       </Link>
     </div>
